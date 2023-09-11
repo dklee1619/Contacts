@@ -7,20 +7,23 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import com.test.mycontacts.MyItem.Companion.defaultDataList
 
 class AlarmReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
-        val name = (MyItems.defaultDataList.last() as MyItems.Item).aName
+        val name = defaultDataList.last().aName
         showNotification(context, name)
     }
 
     private fun showNotification(context: Context, name: String) {
         val channelId = "notification_channel_id"
         val channelName = "Notification Channel"
-        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        val channel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
+        val channel =
+            NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
         notificationManager.createNotificationChannel(channel)
         val openAppIntent = Intent(context, MainActivity::class.java)
         val pendingOpenAppIntent = PendingIntent.getActivity(

@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fba9302d-1cc2-4761-8681-fd4a1f71e381" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/src/main/res/layout/fragment_detail_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/src/main/res/layout/fragment_detail_page.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/src/main/res/layout/fragment_my_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/src/main/res/layout/fragment_my_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +32,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/lenovo/Desktop/subject/android_practice/hubaldae2_news_reader_app"
+    "last_opened_file_path": "C:/Users/lenovo/Desktop/teamproject/Contacts/app"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

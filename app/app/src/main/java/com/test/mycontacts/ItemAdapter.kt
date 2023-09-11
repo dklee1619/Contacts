@@ -5,13 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-
-import com.test.mycontacts.MyItems
+import com.test.mycontacts.MyItem
 import com.test.mycontacts.databinding.ItemRecyclerviewBinding
 import com.test.mycontacts.databinding.ItemRecyclerview2Binding
 import com.test.mycontacts.R
 
-class MyAdapter(private val mItems: MutableList<MyItems>) : RecyclerView.Adapter<ViewHolder>() {
+class MyAdapter(private val mItems: MutableList<MyItem>) : RecyclerView.Adapter<ViewHolder>() {
 
     companion object {
         private const val VIEW_TYPE_SM = 1
@@ -57,7 +56,7 @@ class MyAdapter(private val mItems: MutableList<MyItems>) : RecyclerView.Adapter
 
     //실제로 화면이 실행됐을때 한 줄씩 불러준다.
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = mItems[position] as? MyItems.Item ?: return
+        val item = mItems[position]
         when (holder.itemViewType) {
             VIEW_TYPE_SM -> {
                 val smHolder = holder as SmViewHolder
@@ -72,6 +71,7 @@ class MyAdapter(private val mItems: MutableList<MyItems>) : RecyclerView.Adapter
                     itemClick?.onClick(it, position)
                 }
             }
+
             VIEW_TYPE_JYP -> {
                 val jypHolder = holder as JypViewHolder
                 jypHolder.bind(item)
@@ -87,7 +87,6 @@ class MyAdapter(private val mItems: MutableList<MyItems>) : RecyclerView.Adapter
             }
         }
     }
-
 
 
     override fun getItemId(position: Int): Long {
@@ -110,14 +109,14 @@ class MyAdapter(private val mItems: MutableList<MyItems>) : RecyclerView.Adapter
         val name = binding.textItem
         val likeImageView = binding.like
 
-        fun bind(item: MyItems) {
-            if (item is MyItems.Item) {
+        fun bind(item: MyItem) {
 //                iconImageView.setImageResource(item.aIcon ?: 0)
-                iconImageView.setImageURI(item.aIcon)
-                name.text = item.aName
-                if(item.like == 0)
-                {likeImageView.setImageResource(R.drawable.img_like3)}
-                else {likeImageView.setImageResource(R.drawable.img_like5)}
+            iconImageView.setImageURI(item.aIcon)
+            name.text = item.aName
+            if (item.like == 0) {
+                likeImageView.setImageResource(R.drawable.img_like3)
+            } else {
+                likeImageView.setImageResource(R.drawable.img_like5)
             }
         }
 
@@ -130,14 +129,14 @@ class MyAdapter(private val mItems: MutableList<MyItems>) : RecyclerView.Adapter
         val name = binding.textItem
         val likeImageView = binding.like
 
-        fun bind(item: MyItems) {
-            if (item is MyItems.Item) {
+        fun bind(item: MyItem) {
 //                iconImageView.setImageResource(item.aIcon?:0) // 다이어로그 이미지 변환을 위해 URI로 변경
-                iconImageView.setImageURI(item.aIcon)
-                name.text = item.aName
-                if(item.like == 0)
-                {likeImageView.setImageResource(R.drawable.img_like3)}
-                else {likeImageView.setImageResource(R.drawable.img_like5)}
+            iconImageView.setImageURI(item.aIcon)
+            name.text = item.aName
+            if (item.like == 0) {
+                likeImageView.setImageResource(R.drawable.img_like3)
+            } else {
+                likeImageView.setImageResource(R.drawable.img_like5)
             }
         }
 

@@ -14,13 +14,22 @@ import android.Manifest
 
 class MyPageFragment : Fragment() {
     private lateinit var binding: FragmentMyPageBinding
+
     // 권한 요청 ID
     private val REQUEST_GALLERY = 1
     private val REQUEST_PERMISSION = 2
+
     // 갤러리를 열기 위한 버튼 클릭 리스너
     fun openGallery() {
-        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), REQUEST_PERMISSION) // 변경된 부분
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            requestPermissions(
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                REQUEST_PERMISSION
+            ) // 변경된 부분
         } else {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
@@ -29,8 +38,12 @@ class MyPageFragment : Fragment() {
     }
 
     // 권한 요청 결과 처리
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        when(requestCode) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when (requestCode) {
             REQUEST_PERMISSION -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     openGallery()
@@ -49,6 +62,7 @@ class MyPageFragment : Fragment() {
             binding.image.setImageURI(imageUri)
         }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

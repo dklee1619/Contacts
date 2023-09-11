@@ -38,7 +38,7 @@ class MessageActivity : AppCompatActivity() {
         })
 
         linearAnimation.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(animation: Animation ) {
+            override fun onAnimationStart(animation: Animation) {
                 contactText.visibility = TextView.VISIBLE
             }
 

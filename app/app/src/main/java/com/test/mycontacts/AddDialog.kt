@@ -29,7 +29,7 @@ class AddDialog(private val activity: Activity, private val binding: DialogBindi
         const val REQUEST_GALLERY_DIALOG = 3
     }
 
-    var selectedImageUri: Uri? = null
+    var selectedImageUri: Uri? = null // 갤러리에서 선택할 사진을 담을 변수 초기값은 null로 설정
     fun openGalleryForDialog() { // 갤러리를 여는 함수.
         if (ContextCompat.checkSelfPermission(
                 activity,
@@ -42,13 +42,14 @@ class AddDialog(private val activity: Activity, private val binding: DialogBindi
                 REQUEST_GALLERY_DIALOG
             )
         } else { // 권한이 없는상태가 아니라면(= 권한이 있는 상태라면)
-            val intent = Intent(Intent.ACTION_PICK)
+            val intent =
+                Intent(Intent.ACTION_PICK) // 이미지를 선택할 수 있는 액션을 가진 인텐트 객체를 생성, 선택을 하면 intent에 데이터가 담김
             intent.type = "image/*" // 갤러리에서 이미지 파일만 표시하도록 지정
             activity.startActivityForResult(
                 intent,
                 REQUEST_GALLERY_DIALOG
             ) // REQUEST_GALLERY_DIALOG = 3이면, 갤러리 액티비티를 시작하면서 이 액티비티에서 결과를 반환받을 것임을 알린다.
-        }
+        } // 이 함수의 결과로 데이터를 선택하면 intent에 이미지 데이터(자료형은 Uri)가 담김
     }
 
     fun dig() {
@@ -76,7 +77,7 @@ class AddDialog(private val activity: Activity, private val binding: DialogBindi
             val name = binding.name.text.toString()
             val number = binding.number.text.toString()
             val mail = binding.mail.text.toString()
-            val uri = selectedImageUri
+            val uri = selectedImageUri // 갤러리에서 선택한 사진을 uri라는 변수에 담음
             Log.d("imageUri1", "imageUri:${uri}") // 잘 추가됫는지 Log 확인용
             if (condition(uri, name, number, mail)) {
                 onClickedListener.onClicked(
@@ -147,7 +148,7 @@ class AddDialog(private val activity: Activity, private val binding: DialogBindi
     }
 
     private fun scheduleAlarm(context: Context, minutesFromNow: Int) {
-        if(minutesFromNow!=0) {
+        if (minutesFromNow != 0) {
             val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
             val alarmIntent = Intent(context, AlarmReceiver::class.java).let {
@@ -163,7 +164,7 @@ class AddDialog(private val activity: Activity, private val binding: DialogBindi
 
     fun setImageUri(imageUri: Uri?) { // 다이어로그 이미지 추가용
 //        Log.d("imageUri2", "imageUri:${imageUri}") // 잘 추가됫는지 Log 확인용
-        this.selectedImageUri = imageUri
-        binding.profileimage.setImageURI(imageUri)
+        this.selectedImageUri = imageUri // 갤러리에서 선택한 사진 데이터를 담음
+        binding.profileimage.setImageURI(imageUri) // 갤러리에서 선택한 사진을 다이어로그에 표기
     }
 }
